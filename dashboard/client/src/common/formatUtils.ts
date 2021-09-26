@@ -1,3 +1,11 @@
+import dayjs from "dayjs";
+
+export const formatTimeStamp = (
+  timestamp: number,
+) => {
+  return dayjs(timestamp).format("YYYY/MM/DD HH:mm:ss");
+}
+
 export const formatByteAmount = (
   amount: number,
   unit: "mebibyte" | "gibibyte",

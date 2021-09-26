@@ -12,10 +12,10 @@ import {
 import { SearchOutlined } from "@material-ui/icons";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Pagination from "@material-ui/lab/Pagination";
-import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../App";
+import { formatTimeStamp } from "../common/formatUtils";
 import { getEvents, getGlobalEvents } from "../service/event";
 import { Event } from "../type/event";
 import { useFilter } from "../util/hook";
@@ -290,9 +290,7 @@ const EventTable = (props: EventTableProps) => {
               }) => {
                 const realTimestamp =
                   timeStamp ||
-                  dayjs(Math.floor(timestamp * 1000)).format(
-                    "YYYY-MM-DD HH:mm:ss",
-                  );
+                  formatTimeStamp(Math.floor(timestamp * 1000));
                 const hostname = sourceHostname || hostName;
                 const realPid = pid || sourcePid;
                 return (

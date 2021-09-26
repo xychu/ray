@@ -9,12 +9,12 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
-import dayjs from "dayjs";
 import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { SearchInput, SearchSelect } from "../../components/SearchComponent";
 import TitleCard from "../../components/TitleCard";
+import { formatTimeStamp } from "../../common/formatUtils";
 import { useJobList } from "./hook/useJobList";
 
 const useStyles = makeStyles((theme) => ({
@@ -118,11 +118,11 @@ const JobList = () => {
                         {isDead ? "true" : "false"}
                       </TableCell>
                       <TableCell align="center">
-                        {dayjs(Number(startTime)).format("YYYY/MM/DD HH:mm:ss")}
+                        {formatTimeStamp(Number(startTime))}
                       </TableCell>
                       <TableCell align="center">
                         {endTime > 0
-                          ? dayjs(Number(endTime)).format("YYYY/MM/DD HH:mm:ss")
+                          ? formatTimeStamp(Number(endTime))
                           : "-"}
                       </TableCell>
                     </TableRow>

@@ -6,7 +6,6 @@ import {
   TableContainer,
   Tabs,
 } from "@material-ui/core";
-import dayjs from "dayjs";
 import React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import ActorTable from "../../components/ActorTable";
@@ -15,6 +14,7 @@ import PercentageBar from "../../components/PercentageBar";
 import { StatusChip } from "../../components/StatusChip";
 import TitleCard from "../../components/TitleCard";
 import RayletWorkerTable from "../../components/WorkerTable";
+import { formatTimeStamp } from "../../common/formatUtils";
 import { ViewMeasures } from "../../type/raylet";
 import { memoryConverter } from "../../util/converter";
 import { useNodeDetail } from "./hook/useNodeDetail";
@@ -149,9 +149,7 @@ const NodeDetailPage = (props: RouteComponentProps<{ id: string }>) => {
               </Grid>
               <Grid item xs>
                 <div className={classes.label}>Boot Time</div>{" "}
-                {dayjs(nodeDetail.bootTime * 1000).format(
-                  "YYYY/MM/DD HH:mm:ss",
-                )}
+                {formatTimeStamp(nodeDetail.bootTime * 1000)}
               </Grid>
             </Grid>
             <Grid container spacing={2}>
